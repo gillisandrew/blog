@@ -1,10 +1,11 @@
-import React, { Component, SFC, ReactElement, JSXElementConstructor } from 'react';
+import React, { SFCElement, JSXElementConstructor } from 'react';
 import PropTypes, { ReactNodeLike } from 'prop-types';
 import { kebabCase } from 'lodash';
 import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
-import Content, { HTMLContent } from '../components/Content';
+import Content, { HTMLContent, CustomContent } from '../components/Content';
+import { BlogPostByIdQuery } from '../graphql';
 
 export const BlogPostTemplate = ({ content, contentComponent, description, tags, title, helmet }: P): JSX.Element => {
     const PostContent = contentComponent || Content;
@@ -40,15 +41,18 @@ export const BlogPostTemplate = ({ content, contentComponent, description, tags,
 };
 
 interface P {
-    content: ReactNodeLike;
-    contentComponent?: JSXElementConstructor<{ content: ReactNodeLike; className?: string }>;
+    content: CustomContent['content'];
+    contentComponent?: JSXElementConstructor<CustomContent>;
     description?: string;
     title?: string;
     helmet?: object;
     tags: string[];
 }
 
-const BlogPost = ({ data }): JSX.Element => {
+interface BlogPostProps {
+    data: BlogPostByIdQuery
+}
+const BlogPost = ({ data }: BlogPostProps): JSX.Element => {
     const { markdownRemark: post } = data;
 
     return (

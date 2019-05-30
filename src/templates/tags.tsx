@@ -2,11 +2,18 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import { TagPageQuery } from '../graphql';
 
-class TagRoute extends React.Component {
-  render() {
+interface TagRouteProps {
+  data: TagPageQuery,
+  pageContext: {
+    tag: string
+  }
+}
+class TagRoute extends React.Component<TagRouteProps> {
+  public render(): JSX.Element {
     const posts = this.props.data.allMarkdownRemark.edges
-    const postLinks = posts.map(post => (
+    const postLinks = posts.map((post): JSX.Element => (
       <li key={post.node.fields.slug}>
         <Link to={post.node.fields.slug}>
           <h2 className="is-size-2">{post.node.frontmatter.title}</h2>

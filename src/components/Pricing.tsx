@@ -1,15 +1,11 @@
 import React from 'react';
+import { ProductPageQuery } from '../graphql';
 
-interface P {
-    data: {
-        plan: string;
-        price: string | number;
-        description: string;
-        items: string[];
-    }[];
+interface PricingProps {
+    data: ProductPageQuery['markdownRemark']['frontmatter']['pricing']['plans']
 }
 
-const Pricing = ({ data }: P): JSX.Element => (
+const Pricing = ({ data }: PricingProps): JSX.Element => (
     <div className="columns">
         {data.map(
             (price): JSX.Element => (

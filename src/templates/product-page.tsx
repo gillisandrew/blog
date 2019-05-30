@@ -16,6 +16,7 @@ export const ProductPageTemplate = ({
   intro,
   main,
   testimonials,
+  fullImage,
   pricing,
 }: ProductPageQuery['markdownRemark']['frontmatter']): JSX.Element => (
   <div className="content">
@@ -85,9 +86,9 @@ export const ProductPageTemplate = ({
                 className="full-width-image-container"
                 style={{
                   backgroundImage: `url(${
-                    full_image.childImageSharp
-                      ? full_image.childImageSharp.fluid.src
-                      : full_image
+                    fullImage.childImageSharp
+                      ? fullImage.childImageSharp.fluid.src
+                      : fullImage
                   })`,
                 }}
               />
@@ -141,7 +142,7 @@ const ProductPage = ({ data }: ProductPageProps): JSX.Element => {
         intro={frontmatter.intro}
         main={frontmatter.main}
         testimonials={frontmatter.testimonials}
-        full_image={frontmatter.full_image}
+        fullImage={frontmatter.fullImage}
         pricing={frontmatter.pricing}
       />
     </Layout>
@@ -220,7 +221,7 @@ export const productPageQuery = graphql`
           author
           quote
         }
-        full_image {
+        fullImage {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
               ...GatsbyImageSharpFluid

@@ -8,5 +8,6 @@ generates:
       - typescript:
         namingConvention:
           typeNames: change-case#pascalCase
+          transformUnderscore: false
       - typescript-operations
       

@@ -5,7 +5,6 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
-import GatsbyImage from 'gatsby-image';
 import { IndexPageTemplateQuery } from '../graphql';
 
 export const IndexPageTemplate = ({
@@ -16,7 +15,7 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
-}: IndexPageTemplateProps): JSX.Element => (
+}: IndexPageTemplateQuery['markdownRemark']['frontmatter']): JSX.Element => (
   <div>
     <div
       className="full-width-image margin-top-0"
@@ -134,13 +133,7 @@ const IndexPage = ({ data }: {data: IndexPageTemplateQuery}): JSX.Element => {
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
+        {...frontmatter}
       />
     </Layout>
   )

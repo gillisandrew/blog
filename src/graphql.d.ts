@@ -2835,7 +2835,6 @@ export type Frontmatter_2 = {
     __typename?: 'frontmatter_2';
     title?: Maybe<Scalars['String']>;
     templateKey?: Maybe<Scalars['String']>;
-    path?: Maybe<Scalars['String']>;
     image?: Maybe<File>;
     heading?: Maybe<Scalars['String']>;
     subheading?: Maybe<Scalars['String']>;
@@ -2843,12 +2842,13 @@ export type Frontmatter_2 = {
     description?: Maybe<Scalars['String']>;
     intro?: Maybe<Intro_2>;
     main?: Maybe<Main_2>;
+    path?: Maybe<Scalars['String']>;
     date?: Maybe<Scalars['Date']>;
     featuredpost?: Maybe<Scalars['Boolean']>;
     featuredimage?: Maybe<File>;
     tags?: Maybe<Array<Maybe<Scalars['String']>>>;
     testimonials?: Maybe<Array<Maybe<Testimonials_2>>>;
-    full_image?: Maybe<File>;
+    fullImage?: Maybe<File>;
     pricing?: Maybe<Pricing_2>;
 };
 
@@ -3638,7 +3638,6 @@ export type MarkdownRemarkConnectionFrontmatterImageQueryString_2 = {
 export type MarkdownRemarkConnectionFrontmatterInputObject_2 = {
     title?: Maybe<MarkdownRemarkConnectionFrontmatterTitleQueryString_2>;
     templateKey?: Maybe<MarkdownRemarkConnectionFrontmatterTemplateKeyQueryString_2>;
-    path?: Maybe<MarkdownRemarkConnectionFrontmatterPathQueryString_2>;
     image?: Maybe<MarkdownRemarkConnectionFrontmatterImageQueryString_2>;
     heading?: Maybe<MarkdownRemarkConnectionFrontmatterHeadingQueryString_2>;
     subheading?: Maybe<MarkdownRemarkConnectionFrontmatterSubheadingQueryString_2>;
@@ -3646,12 +3645,13 @@ export type MarkdownRemarkConnectionFrontmatterInputObject_2 = {
     description?: Maybe<MarkdownRemarkConnectionFrontmatterDescriptionQueryString_2>;
     intro?: Maybe<MarkdownRemarkConnectionFrontmatterIntroInputObject_2>;
     main?: Maybe<MarkdownRemarkConnectionFrontmatterMainInputObject_2>;
+    path?: Maybe<MarkdownRemarkConnectionFrontmatterPathQueryString_2>;
     date?: Maybe<MarkdownRemarkConnectionFrontmatterDateQueryString_2>;
     featuredpost?: Maybe<MarkdownRemarkConnectionFrontmatterFeaturedpostQueryBoolean_2>;
     featuredimage?: Maybe<MarkdownRemarkConnectionFrontmatterFeaturedimageQueryString_2>;
     tags?: Maybe<MarkdownRemarkConnectionFrontmatterTagsQueryList_2>;
     testimonials?: Maybe<MarkdownRemarkConnectionFrontmatterTestimonialsQueryList_2>;
-    full_image?: Maybe<MarkdownRemarkConnectionFrontmatterFullImageQueryString_2>;
+    fullImage?: Maybe<MarkdownRemarkConnectionFrontmatterFullImageQueryString_2>;
     pricing?: Maybe<MarkdownRemarkConnectionFrontmatterPricingInputObject_2>;
 };
 
@@ -4057,7 +4057,6 @@ export enum MarkdownRemarkConnectionSortByFieldsEnum {
     InternalFieldOwnersSlug = 'internal___fieldOwners___slug',
     FrontmatterTitle = 'frontmatter___title',
     FrontmatterTemplateKey = 'frontmatter___templateKey',
-    FrontmatterPath = 'frontmatter___path',
     FrontmatterImage = 'frontmatter___image',
     FrontmatterHeading = 'frontmatter___heading',
     FrontmatterSubheading = 'frontmatter___subheading',
@@ -4072,12 +4071,13 @@ export enum MarkdownRemarkConnectionSortByFieldsEnum {
     FrontmatterMainImage1 = 'frontmatter___main___image1',
     FrontmatterMainImage2 = 'frontmatter___main___image2',
     FrontmatterMainImage3 = 'frontmatter___main___image3',
+    FrontmatterPath = 'frontmatter___path',
     FrontmatterDate = 'frontmatter___date',
     FrontmatterFeaturedpost = 'frontmatter___featuredpost',
     FrontmatterFeaturedimage = 'frontmatter___featuredimage',
     FrontmatterTags = 'frontmatter___tags',
     FrontmatterTestimonials = 'frontmatter___testimonials',
-    FrontmatterFullImage = 'frontmatter___full_image',
+    FrontmatterFullImage = 'frontmatter___fullImage',
     FrontmatterPricingHeading = 'frontmatter___pricing___heading',
     FrontmatterPricingDescription = 'frontmatter___pricing___description',
     FrontmatterPricingPlans = 'frontmatter___pricing___plans',
@@ -4109,7 +4109,6 @@ export enum MarkdownRemarkDistinctEnum {
     InternalFieldOwnersSlug = 'internal___fieldOwners___slug',
     FrontmatterTitle = 'frontmatter___title',
     FrontmatterTemplateKey = 'frontmatter___templateKey',
-    FrontmatterPath = 'frontmatter___path',
     FrontmatterImage = 'frontmatter___image',
     FrontmatterHeading = 'frontmatter___heading',
     FrontmatterSubheading = 'frontmatter___subheading',
@@ -4124,12 +4123,13 @@ export enum MarkdownRemarkDistinctEnum {
     FrontmatterMainImage1 = 'frontmatter___main___image1',
     FrontmatterMainImage2 = 'frontmatter___main___image2',
     FrontmatterMainImage3 = 'frontmatter___main___image3',
+    FrontmatterPath = 'frontmatter___path',
     FrontmatterDate = 'frontmatter___date',
     FrontmatterFeaturedpost = 'frontmatter___featuredpost',
     FrontmatterFeaturedimage = 'frontmatter___featuredimage',
     FrontmatterTags = 'frontmatter___tags',
     FrontmatterTestimonials = 'frontmatter___testimonials',
-    FrontmatterFullImage = 'frontmatter___full_image',
+    FrontmatterFullImage = 'frontmatter___fullImage',
     FrontmatterPricingHeading = 'frontmatter___pricing___heading',
     FrontmatterPricingDescription = 'frontmatter___pricing___description',
     FrontmatterPricingPlans = 'frontmatter___pricing___plans',
@@ -4235,7 +4235,6 @@ export type MarkdownRemarkFrontmatterImageQueryString_2 = {
 export type MarkdownRemarkFrontmatterInputObject_2 = {
     title?: Maybe<MarkdownRemarkFrontmatterTitleQueryString_2>;
     templateKey?: Maybe<MarkdownRemarkFrontmatterTemplateKeyQueryString_2>;
-    path?: Maybe<MarkdownRemarkFrontmatterPathQueryString_2>;
     image?: Maybe<MarkdownRemarkFrontmatterImageQueryString_2>;
     heading?: Maybe<MarkdownRemarkFrontmatterHeadingQueryString_2>;
     subheading?: Maybe<MarkdownRemarkFrontmatterSubheadingQueryString_2>;
@@ -4243,12 +4242,13 @@ export type MarkdownRemarkFrontmatterInputObject_2 = {
     description?: Maybe<MarkdownRemarkFrontmatterDescriptionQueryString_2>;
     intro?: Maybe<MarkdownRemarkFrontmatterIntroInputObject_2>;
     main?: Maybe<MarkdownRemarkFrontmatterMainInputObject_2>;
+    path?: Maybe<MarkdownRemarkFrontmatterPathQueryString_2>;
     date?: Maybe<MarkdownRemarkFrontmatterDateQueryString_2>;
     featuredpost?: Maybe<MarkdownRemarkFrontmatterFeaturedpostQueryBoolean_2>;
     featuredimage?: Maybe<MarkdownRemarkFrontmatterFeaturedimageQueryString_2>;
     tags?: Maybe<MarkdownRemarkFrontmatterTagsQueryList_2>;
     testimonials?: Maybe<MarkdownRemarkFrontmatterTestimonialsQueryList_2>;
-    full_image?: Maybe<MarkdownRemarkFrontmatterFullImageQueryString_2>;
+    fullImage?: Maybe<MarkdownRemarkFrontmatterFullImageQueryString_2>;
     pricing?: Maybe<MarkdownRemarkFrontmatterPricingInputObject_2>;
 };
 
@@ -4597,7 +4597,6 @@ export enum MarkdownRemarkGroupEnum {
     InternalFieldOwnersSlug = 'internal___fieldOwners___slug',
     FrontmatterTitle = 'frontmatter___title',
     FrontmatterTemplateKey = 'frontmatter___templateKey',
-    FrontmatterPath = 'frontmatter___path',
     FrontmatterImage = 'frontmatter___image',
     FrontmatterHeading = 'frontmatter___heading',
     FrontmatterSubheading = 'frontmatter___subheading',
@@ -4612,12 +4611,13 @@ export enum MarkdownRemarkGroupEnum {
     FrontmatterMainImage1 = 'frontmatter___main___image1',
     FrontmatterMainImage2 = 'frontmatter___main___image2',
     FrontmatterMainImage3 = 'frontmatter___main___image3',
+    FrontmatterPath = 'frontmatter___path',
     FrontmatterDate = 'frontmatter___date',
     FrontmatterFeaturedpost = 'frontmatter___featuredpost',
     FrontmatterFeaturedimage = 'frontmatter___featuredimage',
     FrontmatterTags = 'frontmatter___tags',
     FrontmatterTestimonials = 'frontmatter___testimonials',
-    FrontmatterFullImage = 'frontmatter___full_image',
+    FrontmatterFullImage = 'frontmatter___fullImage',
     FrontmatterPricingHeading = 'frontmatter___pricing___heading',
     FrontmatterPricingDescription = 'frontmatter___pricing___description',
     FrontmatterPricingPlans = 'frontmatter___pricing___plans',
@@ -8613,7 +8613,7 @@ export type ProductPageQuery = { __typename?: 'Query' } & {
                         testimonials: Maybe<
                             Array<Maybe<{ __typename?: 'testimonials_2' } & Pick<Testimonials_2, 'author' | 'quote'>>>
                         >;
-                        full_image: Maybe<
+                        fullImage: Maybe<
                             { __typename?: 'File' } & {
                                 childImageSharp: Maybe<
                                     { __typename?: 'ImageSharp' } & {
