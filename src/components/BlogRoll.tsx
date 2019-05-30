@@ -1,17 +1,22 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
-
-class BlogRoll extends React.Component {
-  render() {
+interface P {
+  data: {
+    allMarkdownRemark: {
+      edges: any[];
+    }
+  },
+}
+class BlogRoll extends React.Component<P> {
+  public render(): React.ReactNode {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
 
     return (
       <div className="columns is-multiline">
         {posts &&
-          posts.map(({ node: post }) => (
+          posts.map(({ node: post }): JSX.Element => (
             <div className="is-parent column is-6" key={post.id}>
               <article
                 className={`blog-list-item tile is-child box notification ${
@@ -60,15 +65,7 @@ class BlogRoll extends React.Component {
   }
 }
 
-BlogRoll.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
-
-export default () => (
+const BlogRollWithQuery = (): JSX.Element => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
@@ -101,6 +98,7 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count} />}
+    render={(data): React.ReactNode => <BlogRoll data={data} />}
   />
 )
+export default BlogRollWithQuery;

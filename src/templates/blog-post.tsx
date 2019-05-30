@@ -41,7 +41,7 @@ export const BlogPostTemplate = ({ content, contentComponent, description, tags,
 
 interface P {
     content: ReactNodeLike;
-    contentComponent?: JSXElementConstructor<{ content: ReactNodeLike; className: string }>;
+    contentComponent?: JSXElementConstructor<{ content: ReactNodeLike; className?: string }>;
     description?: string;
     title?: string;
     helmet?: object;
@@ -61,7 +61,6 @@ const BlogPost = ({ data }): JSX.Element => {
                     <Helmet titleTemplate="%s | Blog">
                         <title>{`${post.frontmatter.title}`}</title>
                         <meta name="description" content={`${post.frontmatter.description}`} />
-                        />
                     </Helmet>
                 }
                 tags={post.frontmatter.tags}

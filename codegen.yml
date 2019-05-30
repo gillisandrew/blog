@@ -1,0 +1,12 @@
+schema: http://localhost:8000/___graphql
+documents:
+  - ./src/**/*.{ts,tsx}
+  - ./node_modules/gatsby-*/**/*.js
+generates:
+  ./src/graphql.d.ts:
+    plugins:
+      - typescript:
+        namingConvention:
+          typeNames: change-case#pascalCase
+      - typescript-operations
+      

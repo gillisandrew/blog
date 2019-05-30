@@ -6,6 +6,7 @@ import Features from '../components/Features'
 import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import { ProductPageQuery } from '../graphql';
 
 export const ProductPageTemplate = ({
   image,
@@ -15,9 +16,8 @@ export const ProductPageTemplate = ({
   intro,
   main,
   testimonials,
-  fullImage,
   pricing,
-}) => (
+}: ProductPageQuery['markdownRemark']['frontmatter']): JSX.Element => (
   <div className="content">
     <div
       className="full-width-image-container margin-top-0"
@@ -85,9 +85,9 @@ export const ProductPageTemplate = ({
                 className="full-width-image-container"
                 style={{
                   backgroundImage: `url(${
-                    fullImage.childImageSharp
-                      ? fullImage.childImageSharp.fluid.src
-                      : fullImage
+                    full_image.childImageSharp
+                      ? full_image.childImageSharp.fluid.src
+                      : full_image
                   })`,
                 }}
               />
@@ -128,7 +128,7 @@ ProductPageTemplate.propTypes = {
   }),
 }
 
-const ProductPage = ({ data }) => {
+const ProductPage = ({ data }: ProductPageProps): JSX.Element => {
   const { frontmatter } = data.markdownRemark
 
   return (
@@ -141,20 +141,16 @@ const ProductPage = ({ data }) => {
         intro={frontmatter.intro}
         main={frontmatter.main}
         testimonials={frontmatter.testimonials}
-        fullImage={frontmatter.full_image}
+        full_image={frontmatter.full_image}
         pricing={frontmatter.pricing}
       />
     </Layout>
   )
 }
-
-ProductPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
+interface ProductPageProps {
+  data: ProductPageQuery
 }
+
 
 export default ProductPage
 
