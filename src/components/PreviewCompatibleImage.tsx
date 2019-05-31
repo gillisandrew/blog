@@ -1,30 +1,24 @@
 import React from 'react';
 import Img from 'gatsby-image';
 
-const PreviewCompatibleImage = ({ imageInfo }: P): JSX.Element => {
-    const imageStyle = { borderRadius: '5px' };
-    const { alt = '', childImageSharp, image } = imageInfo;
-
+const PreviewCompatibleImage: React.FunctionComponent<PreviewCompatibleImageProps> = ({ alt = '', childImageSharp = null, image = null }: PreviewCompatibleImageProps): JSX.Element => {
     if (!!image && !!image.childImageSharp) {
-        return <Img style={imageStyle} fluid={image.childImageSharp.fluid} alt={alt} />;
+        return <Img className="image w-full h" fluid={{...image.childImageSharp.fluid,  aspectRatio: 3/1}} alt={alt} />;
     }
-
     if (!!childImageSharp) {
-        return <Img style={imageStyle} fluid={childImageSharp.fluid} alt={alt} />;
+        return <Img fluid={{...childImageSharp.fluid,  aspectRatio: 1}} alt={alt} />;
     }
-
-    if (!!image && typeof image === 'string') return <img style={imageStyle} src={image} alt={alt} />;
-
-    return null;
+    if (!!image && typeof image === 'string') {
+        return <img src={image} alt={alt} />;
+    }
+    return <span>Nada</span>;
 };
 
-interface P {
-    imageInfo: {
-        alt?: string;
-        style?: object;
+interface PreviewCompatibleImageProps {
+        alt?: string
         childImageSharp?: any;
-        image: any;
-    };
+        image?: any;
+        className: string;
 }
 
 export default PreviewCompatibleImage;

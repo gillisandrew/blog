@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import { taggedTemplateExpression } from 'babel-types';
 interface P {
   data: {
     allMarkdownRemark: {
@@ -14,53 +15,41 @@ class BlogRoll extends React.Component<P> {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <div className="columns is-multiline">
+      <>
         {posts &&
           posts.map(({ node: post }): JSX.Element => (
-            <div className="is-parent column is-6" key={post.id}>
-              <article
-                className={`blog-list-item tile is-child box notification ${
-                  post.frontmatter.featuredpost ? 'is-featured' : ''
-                }`}
-              >
-                <header>
-                  {post.frontmatter.featuredimage ? (
-                    <div className="featured-thumbnail">
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${
-                            post.title
-                          }`,
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                  <p className="post-meta">
+              <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink" key={post.id}>
+                    <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                     <Link
-                      className="title has-text-primary is-size-4"
                       to={post.fields.slug}
-                    >
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
-                    </span>
-                  </p>
-                </header>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
-              </article>
-            </div>
+                     className="flex flex-wrap no-underline hover:no-underline">
+                            <p className="w-full text-gray-600 text-xs md:text-sm px-6 uppercase py-3">{post.frontmatter.date}</p>
+                            <PreviewCompatibleImage className="h-auto w-auto"
+                                image={post.frontmatter.featuredimage}
+                                alt={`featured image thumbnail for post ${
+                                  post.frontmatter.title
+                                }`}
+                            />
+                            <div className="w-full font-bold text-xl text-gray-800 px-6">
+                            {post.frontmatter.title}
+                            </div>
+                            <p className="text-gray-800 text-base px-6 mb-5">
+                            {post.excerpt}
+                            </p>
+                        </Link>
+                    </div>
+                    <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+                        <div className="text-gray-600 uppercase text-xs">{post.frontmatter.tags.map(((tag, index, tags) => (<><span key={index}>{tag}</span>{tags.length - 1 > index  ? ', ' : ''}</>)))}</div>
+                        <div className="flex items-center justify-start">
+                        <Link className="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg" to={post.fields.slug}>
+                            Keep Reading →
+                        </Link>
+                        </div>
+                    </div>
+                </div>
+
           ))}
-      </div>
+      </>
     )
   }
 }
@@ -85,10 +74,12 @@ const BlogRollWithQuery = (): JSX.Element => (
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
+                tags
                 featuredimage {
+                  absolutePath
                   childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
-                      ...GatsbyImageSharpFluid
+                    fluid(maxWidth: 380, quality: 100) {
+                      ...GatsbyImageSharpFluid_tracedSVG
                     }
                   }
                 }
