@@ -11,13 +11,12 @@ export const BlogPostTemplate = ({ content, contentComponent, description, tags,
     const PostContent = contentComponent || Content;
 
     return (
-        <section className="section">
-            {helmet || ''}
-            <div className="container content">
-                <div className="columns">
-                    <div className="column is-10 is-offset-1">
-                        <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
-                        <p>{description}</p>
+        <>
+            {helmet || null}
+            <div className="container mx-auto pt-24 md:px0 px-24">
+                <div className="bg-white text-gray-800 p-4 rounded shadow">
+                        <h1 className="text-2xl font-bold uppercase">{title}</h1>
+                        <p className="">{description}</p>
                         <PostContent content={content} />
                         {tags && tags.length ? (
                             <div style={{ marginTop: `4rem` }}>
@@ -33,10 +32,9 @@ export const BlogPostTemplate = ({ content, contentComponent, description, tags,
                                 </ul>
                             </div>
                         ) : null}
-                    </div>
-                </div>
+                        </div>
             </div>
-        </section>
+        </>
     );
 };
 
@@ -50,7 +48,7 @@ interface P {
 }
 
 interface BlogPostProps {
-    data: BlogPostByIdQuery
+    data: BlogPostByIdQuery;
 }
 const BlogPost = ({ data }: BlogPostProps): JSX.Element => {
     const { markdownRemark: post } = data;

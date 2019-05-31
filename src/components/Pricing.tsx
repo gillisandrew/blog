@@ -2,7 +2,7 @@ import React from 'react';
 import { ProductPageQuery } from '../graphql';
 
 interface PricingProps {
-    data: ProductPageQuery['markdownRemark']['frontmatter']['pricing']['plans']
+    data: ProductPageQuery['markdownRemark']['frontmatter']['pricing']['plans'];
 }
 
 const Pricing = ({ data }: PricingProps): JSX.Element => (

@@ -2,5 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 .gradient {
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+    background: #ff5f6d; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #ffc371, #ff5f6d); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to left,
+        #ffc371,
+        #ff5f6d
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.nav-bar {
+    @apply fixed w-full z-30 top-0 overflow-hidden text-white;
+
+    .nav-inner {
+        @apply w-full mx-auto flex flex-wrap items-center justify-between mt-0 py-2;
+        .nav-brand {
+            @apply pl-4 flex items-center;
+            > a {
+                @apply no-underline text-2xl mt-1 text-white;
+
+                @screen lg {
+                    @apply text-4xl mt-0;
+                }
+                &:hover {
+                    @apply no-underline;
+                }
+                > h1 {
+                    @apply inline-block ml-4 uppercase;
+                }
+            }
+        }
+        .nav-toggle {
+            @apply block pr-4;
+            @screen lg {
+                @apply hidden;
+            }
+            > button {
+                @apply flex items-center px-3 py-2 border rounded text-gray-300 border-gray-400;
+                > svg {
+                    @apply h-8 fill-current inline;
+                }
+                &:hover {
+                    @apply text-white border-white;
+                }
+            }
+        }
+        .nav-content {
+            @apply w-full flex-grow text-black z-20 bg-gray-100 p-4 mt-2 hidden;
+            transition: 0.8s linear max-height;
+
+            @screen lg {
+                @apply flex items-center w-auto bg-transparent p-0 mt-0;
+            }
+        }
+    }
+    &.nav-bar--scrolling {
+        @apply bg-white shadow;
+
+        .nav-inner {
+            .nav-brand {
+                > a {
+                    @apply text-gray-700;
+                }
+            }
+        }
+    }
+    &.nav-bar--toggled {
+        @apply bg-white shadow;
+        .nav-inner {
+            .nav-brand {
+                > a {
+                    @apply text-gray-700;
+                }
+            }
+            .nav-content {
+                @apply flex;
+            }
+        }
+        @screen lg {
+            @apply bg-transparent shadow-none;
+            .nav-inner {
+                .nav-brand {
+                    > a {
+                        @apply text-white;
+                    }
+                }
+            }
+        }
+    }
 }
