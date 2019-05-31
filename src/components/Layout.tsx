@@ -8,8 +8,8 @@ import useSiteMetadata from './SiteMetadata';
 const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute): JSX.Element => {
     const { title, description } = useSiteMetadata();
     return (
-        <div>
-            <Helmet bodyAttributes={{ class: 'leading-normal tracking-normal text-white gradient' }}>
+        <div className="leading-normal tracking-normal text-white gradient">
+            <Helmet>
                 <html lang="en" />
                 <title>{title}</title>
                 <meta name="description" content={description} />
@@ -27,7 +27,7 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute): JSX.Elemen
                 <meta property="og:image" content="/img/og-image.jpg" />
             </Helmet>
             <Navbar items={[{ target: '/', name: 'Home' }, { target: '/contact', name: 'Contact' }]} />
-            <div>{children}</div>
+            {children}
             <Footer />
         </div>
     );

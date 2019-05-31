@@ -2,19 +2,19 @@ import React from 'react';
 import { Link } from 'gatsby';
 import logo from '../img/logo.svg';
 
-interface P {
+interface NavbarProps {
     items: {
         name: string;
         target: string;
     }[];
 }
 
-interface S {
+interface NavbarState {
     active: boolean;
     navBarActiveClass: string;
 }
 
-class Navbar extends React.Component<P, S> {
+class Navbar extends React.Component<NavbarProps, NavbarState> {
     public constructor(props) {
         super(props);
         this.state = {

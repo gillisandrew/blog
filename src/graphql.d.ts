@@ -8421,9 +8421,9 @@ export type BlogRollQueryQuery = { __typename?: 'Query' } & {
     >;
 };
 
-export type Site_Metadata_QueryQueryVariables = {};
+export type SiteMetadataQueryVariables = {};
 
-export type Site_Metadata_QueryQuery = { __typename?: 'Query' } & {
+export type SiteMetadataQuery = { __typename?: 'Query' } & {
     site: Maybe<
         { __typename?: 'Site' } & {
             siteMetadata: Maybe<{ __typename?: 'siteMetadata_2' } & Pick<SiteMetadata_2, 'title' | 'description'>>;
