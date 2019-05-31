@@ -74,6 +74,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
             options: {
+                tailwind: true,
                 develop: false, // Activates purging in npm run develop
                 purgeOnly: ['/all.scss'], // applies purging only on the bulma css file
             },
