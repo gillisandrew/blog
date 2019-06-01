@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql, StaticQuery } from 'gatsby';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
-import { taggedTemplateExpression } from 'babel-types';
+import Img from 'gatsby-image';
 interface P {
     data: {
         allMarkdownRemark: {
@@ -25,26 +25,24 @@ class BlogRoll extends React.Component<P> {
                                         to={post.fields.slug}
                                         className="flex flex-wrap no-underline hover:no-underline"
                                     >
-                                        {post.frontmatter.featuredimage ? (
-                                            <PreviewCompatibleImage
-                                                className="w-full h-24"
-                                                image={post.frontmatter.featuredimage}
-                                                alt={`featured image thumbnail for post ${post.frontmatter.title}`}
-                                            />
+                                        { !!post.frontmatter.featuredimage ? (
+                                            <Img className="image w-full" alt={post.frontmatter.title} fluid={{...post.frontmatter.featuredimage.childImageSharp.fluid, aspectRatio: 16/9}} />
+
                                         ) : (
                                             <div
-                                                className="w-full h-24 gradient text-center text-alpha-50 tracking-widest"
-                                                style={{ lineHeight: '96px' }}
+                                                className="w-full gradient  aspect-ratio-16/9 relative clearfix"
                                             >
-                                                HEY<strong>ANDREW</strong>.DEV
+                                                <div className="absolute top-1/2 left-1/2 px-8 py-4 uppercase w-full text-center text-alpha-40 text-bold tracking-widest" style={{transform: 'translate(-50%, -50%)'}}>
+                                                    {post.frontmatter.title}
+                                                </div>
                                             </div>
                                         )}
                                         <p className="w-full text-gray-600 text-xs md:text-sm px-6 uppercase py-3">
                                             {post.frontmatter.date}
                                         </p>
-                                        <div className="w-full font-bold text-xl text-gray-800 px-6">
+                                        <h3 className="w-full font-bold text-xl text-gray-800 px-6 mb-4">
                                             {post.frontmatter.title}
-                                        </div>
+                                        </h3>
                                         <p className="text-gray-800 text-base px-6 mb-5">{post.excerpt}</p>
                                     </Link>
                                 </div>
@@ -98,8 +96,14 @@ const BlogRollWithQuery = (): JSX.Element => (
                                 featuredimage {
                                     absolutePath
                                     childImageSharp {
-                                        fluid(maxHeight: 192, quality: 100) {
-                                            ...GatsbyImageSharpFluid
+                                        fluid(
+                                            maxWidth: 384
+                                            cropFocus: ENTROPY
+                                            duotone: { shadow: "#134e5e", highlight: "#71b280", opacity: 80 }
+                                            toFormat: PNG
+                                            quality: 100
+                                        ) {
+                                            ...GatsbyImageSharpFluid_withWebp
                                         }
                                     }
                                 }

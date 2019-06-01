@@ -73,7 +73,6 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
                             <h1>
                                 <span>hey</span>
                                 <strong>andrew</strong>
-                                <span className="text-2xl">.dev</span>
                             </h1>
                         </Link>
                     </div>

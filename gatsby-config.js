@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: 'HEYANDREW.DEV',
+        title: 'HEYANDREW',
         description: 'Montreal-based web developer',
     },
     plugins: [
@@ -9,7 +9,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-sass',
             options: {
-                postCssPlugins: [require('tailwindcss')(`./tailwind.config.js`)],
+                postCssPlugins: [require('tailwindcss')(`./src/styles/tailwind.js`)],
             },
         },
         'gatsby-plugin-web-font-loader',

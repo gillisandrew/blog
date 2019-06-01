@@ -14,10 +14,23 @@ export type Scalars = {
     JSON: any;
 };
 
+export type Action_2 = {
+    __typename?: 'action_2';
+    text?: Maybe<Scalars['String']>;
+    target?: Maybe<Scalars['String']>;
+};
+
 export type Blurbs_2 = {
     __typename?: 'blurbs_2';
     image?: Maybe<File>;
     text?: Maybe<Scalars['String']>;
+};
+
+export type Calltoaction_2 = {
+    __typename?: 'calltoaction_2';
+    title?: Maybe<Scalars['String']>;
+    content?: Maybe<Scalars['String']>;
+    action?: Maybe<Action_2>;
 };
 
 export type Context = {
@@ -2838,7 +2851,7 @@ export type Frontmatter_2 = {
     image?: Maybe<File>;
     heading?: Maybe<Scalars['String']>;
     subheading?: Maybe<Scalars['String']>;
-    mainpitch?: Maybe<Mainpitch_2>;
+    calltoaction?: Maybe<Calltoaction_2>;
     description?: Maybe<Scalars['String']>;
     intro?: Maybe<Intro_2>;
     main?: Maybe<Main_2>;
@@ -3467,12 +3480,6 @@ export type Main_2 = {
     image3?: Maybe<Image3_2>;
 };
 
-export type Mainpitch_2 = {
-    __typename?: 'mainpitch_2';
-    title?: Maybe<Scalars['String']>;
-    description?: Maybe<Scalars['String']>;
-};
-
 export type MarkdownHeading = {
     __typename?: 'MarkdownHeading';
     value?: Maybe<Scalars['String']>;
@@ -3574,6 +3581,53 @@ export type MarkdownRemarkConnectionFileAbsolutePathQueryString_2 = {
     nin?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
+export type MarkdownRemarkConnectionFrontmatterCalltoactionActionInputObject_2 = {
+    text?: Maybe<MarkdownRemarkConnectionFrontmatterCalltoactionActionTextQueryString_2>;
+    target?: Maybe<MarkdownRemarkConnectionFrontmatterCalltoactionActionTargetQueryString_2>;
+};
+
+export type MarkdownRemarkConnectionFrontmatterCalltoactionActionTargetQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MarkdownRemarkConnectionFrontmatterCalltoactionActionTextQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MarkdownRemarkConnectionFrontmatterCalltoactionContentQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MarkdownRemarkConnectionFrontmatterCalltoactionInputObject_2 = {
+    title?: Maybe<MarkdownRemarkConnectionFrontmatterCalltoactionTitleQueryString_2>;
+    content?: Maybe<MarkdownRemarkConnectionFrontmatterCalltoactionContentQueryString_2>;
+    action?: Maybe<MarkdownRemarkConnectionFrontmatterCalltoactionActionInputObject_2>;
+};
+
+export type MarkdownRemarkConnectionFrontmatterCalltoactionTitleQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
 export type MarkdownRemarkConnectionFrontmatterDateQueryString_2 = {
     eq?: Maybe<Scalars['String']>;
     ne?: Maybe<Scalars['String']>;
@@ -3641,7 +3695,7 @@ export type MarkdownRemarkConnectionFrontmatterInputObject_2 = {
     image?: Maybe<MarkdownRemarkConnectionFrontmatterImageQueryString_2>;
     heading?: Maybe<MarkdownRemarkConnectionFrontmatterHeadingQueryString_2>;
     subheading?: Maybe<MarkdownRemarkConnectionFrontmatterSubheadingQueryString_2>;
-    mainpitch?: Maybe<MarkdownRemarkConnectionFrontmatterMainpitchInputObject_2>;
+    calltoaction?: Maybe<MarkdownRemarkConnectionFrontmatterCalltoactionInputObject_2>;
     description?: Maybe<MarkdownRemarkConnectionFrontmatterDescriptionQueryString_2>;
     intro?: Maybe<MarkdownRemarkConnectionFrontmatterIntroInputObject_2>;
     main?: Maybe<MarkdownRemarkConnectionFrontmatterMainInputObject_2>;
@@ -3799,29 +3853,6 @@ export type MarkdownRemarkConnectionFrontmatterMainInputObject_2 = {
     image1?: Maybe<MarkdownRemarkConnectionFrontmatterMainImage1InputObject_2>;
     image2?: Maybe<MarkdownRemarkConnectionFrontmatterMainImage2InputObject_2>;
     image3?: Maybe<MarkdownRemarkConnectionFrontmatterMainImage3InputObject_2>;
-};
-
-export type MarkdownRemarkConnectionFrontmatterMainpitchDescriptionQueryString_2 = {
-    eq?: Maybe<Scalars['String']>;
-    ne?: Maybe<Scalars['String']>;
-    regex?: Maybe<Scalars['String']>;
-    glob?: Maybe<Scalars['String']>;
-    in?: Maybe<Array<Maybe<Scalars['String']>>>;
-    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type MarkdownRemarkConnectionFrontmatterMainpitchInputObject_2 = {
-    title?: Maybe<MarkdownRemarkConnectionFrontmatterMainpitchTitleQueryString_2>;
-    description?: Maybe<MarkdownRemarkConnectionFrontmatterMainpitchDescriptionQueryString_2>;
-};
-
-export type MarkdownRemarkConnectionFrontmatterMainpitchTitleQueryString_2 = {
-    eq?: Maybe<Scalars['String']>;
-    ne?: Maybe<Scalars['String']>;
-    regex?: Maybe<Scalars['String']>;
-    glob?: Maybe<Scalars['String']>;
-    in?: Maybe<Array<Maybe<Scalars['String']>>>;
-    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type MarkdownRemarkConnectionFrontmatterPathQueryString_2 = {
@@ -4060,8 +4091,9 @@ export enum MarkdownRemarkConnectionSortByFieldsEnum {
     FrontmatterImage = 'frontmatter___image',
     FrontmatterHeading = 'frontmatter___heading',
     FrontmatterSubheading = 'frontmatter___subheading',
-    FrontmatterMainpitchTitle = 'frontmatter___mainpitch___title',
-    FrontmatterMainpitchDescription = 'frontmatter___mainpitch___description',
+    FrontmatterCalltoactionTitle = 'frontmatter___calltoaction___title',
+    FrontmatterCalltoactionContent = 'frontmatter___calltoaction___content',
+    FrontmatterCalltoactionAction = 'frontmatter___calltoaction___action',
     FrontmatterDescription = 'frontmatter___description',
     FrontmatterIntroBlurbs = 'frontmatter___intro___blurbs',
     FrontmatterIntroHeading = 'frontmatter___intro___heading',
@@ -4112,8 +4144,9 @@ export enum MarkdownRemarkDistinctEnum {
     FrontmatterImage = 'frontmatter___image',
     FrontmatterHeading = 'frontmatter___heading',
     FrontmatterSubheading = 'frontmatter___subheading',
-    FrontmatterMainpitchTitle = 'frontmatter___mainpitch___title',
-    FrontmatterMainpitchDescription = 'frontmatter___mainpitch___description',
+    FrontmatterCalltoactionTitle = 'frontmatter___calltoaction___title',
+    FrontmatterCalltoactionContent = 'frontmatter___calltoaction___content',
+    FrontmatterCalltoactionAction = 'frontmatter___calltoaction___action',
     FrontmatterDescription = 'frontmatter___description',
     FrontmatterIntroBlurbs = 'frontmatter___intro___blurbs',
     FrontmatterIntroHeading = 'frontmatter___intro___heading',
@@ -4163,6 +4196,53 @@ export type MarkdownRemarkFieldsSlugQueryString_2 = {
 };
 
 export type MarkdownRemarkFileAbsolutePathQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MarkdownRemarkFrontmatterCalltoactionActionInputObject_2 = {
+    text?: Maybe<MarkdownRemarkFrontmatterCalltoactionActionTextQueryString_2>;
+    target?: Maybe<MarkdownRemarkFrontmatterCalltoactionActionTargetQueryString_2>;
+};
+
+export type MarkdownRemarkFrontmatterCalltoactionActionTargetQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MarkdownRemarkFrontmatterCalltoactionActionTextQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MarkdownRemarkFrontmatterCalltoactionContentQueryString_2 = {
+    eq?: Maybe<Scalars['String']>;
+    ne?: Maybe<Scalars['String']>;
+    regex?: Maybe<Scalars['String']>;
+    glob?: Maybe<Scalars['String']>;
+    in?: Maybe<Array<Maybe<Scalars['String']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type MarkdownRemarkFrontmatterCalltoactionInputObject_2 = {
+    title?: Maybe<MarkdownRemarkFrontmatterCalltoactionTitleQueryString_2>;
+    content?: Maybe<MarkdownRemarkFrontmatterCalltoactionContentQueryString_2>;
+    action?: Maybe<MarkdownRemarkFrontmatterCalltoactionActionInputObject_2>;
+};
+
+export type MarkdownRemarkFrontmatterCalltoactionTitleQueryString_2 = {
     eq?: Maybe<Scalars['String']>;
     ne?: Maybe<Scalars['String']>;
     regex?: Maybe<Scalars['String']>;
@@ -4238,7 +4318,7 @@ export type MarkdownRemarkFrontmatterInputObject_2 = {
     image?: Maybe<MarkdownRemarkFrontmatterImageQueryString_2>;
     heading?: Maybe<MarkdownRemarkFrontmatterHeadingQueryString_2>;
     subheading?: Maybe<MarkdownRemarkFrontmatterSubheadingQueryString_2>;
-    mainpitch?: Maybe<MarkdownRemarkFrontmatterMainpitchInputObject_2>;
+    calltoaction?: Maybe<MarkdownRemarkFrontmatterCalltoactionInputObject_2>;
     description?: Maybe<MarkdownRemarkFrontmatterDescriptionQueryString_2>;
     intro?: Maybe<MarkdownRemarkFrontmatterIntroInputObject_2>;
     main?: Maybe<MarkdownRemarkFrontmatterMainInputObject_2>;
@@ -4396,29 +4476,6 @@ export type MarkdownRemarkFrontmatterMainInputObject_2 = {
     image1?: Maybe<MarkdownRemarkFrontmatterMainImage1InputObject_2>;
     image2?: Maybe<MarkdownRemarkFrontmatterMainImage2InputObject_2>;
     image3?: Maybe<MarkdownRemarkFrontmatterMainImage3InputObject_2>;
-};
-
-export type MarkdownRemarkFrontmatterMainpitchDescriptionQueryString_2 = {
-    eq?: Maybe<Scalars['String']>;
-    ne?: Maybe<Scalars['String']>;
-    regex?: Maybe<Scalars['String']>;
-    glob?: Maybe<Scalars['String']>;
-    in?: Maybe<Array<Maybe<Scalars['String']>>>;
-    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type MarkdownRemarkFrontmatterMainpitchInputObject_2 = {
-    title?: Maybe<MarkdownRemarkFrontmatterMainpitchTitleQueryString_2>;
-    description?: Maybe<MarkdownRemarkFrontmatterMainpitchDescriptionQueryString_2>;
-};
-
-export type MarkdownRemarkFrontmatterMainpitchTitleQueryString_2 = {
-    eq?: Maybe<Scalars['String']>;
-    ne?: Maybe<Scalars['String']>;
-    regex?: Maybe<Scalars['String']>;
-    glob?: Maybe<Scalars['String']>;
-    in?: Maybe<Array<Maybe<Scalars['String']>>>;
-    nin?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type MarkdownRemarkFrontmatterPathQueryString_2 = {
@@ -4600,8 +4657,9 @@ export enum MarkdownRemarkGroupEnum {
     FrontmatterImage = 'frontmatter___image',
     FrontmatterHeading = 'frontmatter___heading',
     FrontmatterSubheading = 'frontmatter___subheading',
-    FrontmatterMainpitchTitle = 'frontmatter___mainpitch___title',
-    FrontmatterMainpitchDescription = 'frontmatter___mainpitch___description',
+    FrontmatterCalltoactionTitle = 'frontmatter___calltoaction___title',
+    FrontmatterCalltoactionContent = 'frontmatter___calltoaction___content',
+    FrontmatterCalltoactionAction = 'frontmatter___calltoaction___action',
     FrontmatterDescription = 'frontmatter___description',
     FrontmatterIntroBlurbs = 'frontmatter___intro___blurbs',
     FrontmatterIntroHeading = 'frontmatter___intro___heading',
@@ -4828,6 +4886,7 @@ export type PluginOptions_3 = {
     maxWidth?: Maybe<Scalars['Int']>;
     destinationDir?: Maybe<Scalars['String']>;
     modulePath?: Maybe<Scalars['String']>;
+    tailwind?: Maybe<Scalars['Boolean']>;
     develop?: Maybe<Scalars['Boolean']>;
     purgeOnly?: Maybe<Array<Maybe<Scalars['String']>>>;
     pathCheck?: Maybe<Scalars['Boolean']>;
@@ -6032,6 +6091,7 @@ export type SitePageConnectionPluginCreatorPluginOptionsInputObject = {
     maxWidth?: Maybe<SitePageConnectionPluginCreatorPluginOptionsMaxWidthQueryInteger>;
     destinationDir?: Maybe<SitePageConnectionPluginCreatorPluginOptionsDestinationDirQueryString>;
     modulePath?: Maybe<SitePageConnectionPluginCreatorPluginOptionsModulePathQueryString>;
+    tailwind?: Maybe<SitePageConnectionPluginCreatorPluginOptionsTailwindQueryBoolean>;
     develop?: Maybe<SitePageConnectionPluginCreatorPluginOptionsDevelopQueryBoolean>;
     purgeOnly?: Maybe<SitePageConnectionPluginCreatorPluginOptionsPurgeOnlyQueryList>;
     pathCheck?: Maybe<SitePageConnectionPluginCreatorPluginOptionsPathCheckQueryBoolean>;
@@ -6192,6 +6252,13 @@ export type SitePageConnectionPluginCreatorPluginOptionsPurgeOnlyQueryList = {
     glob?: Maybe<Scalars['String']>;
     in?: Maybe<Array<Maybe<Scalars['String']>>>;
     nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePageConnectionPluginCreatorPluginOptionsTailwindQueryBoolean = {
+    eq?: Maybe<Scalars['Boolean']>;
+    ne?: Maybe<Scalars['Boolean']>;
+    in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
 export type SitePageConnectionPluginCreatorResolveQueryString = {
@@ -6692,6 +6759,7 @@ export type SitePagePluginCreatorPluginOptionsInputObject = {
     maxWidth?: Maybe<SitePagePluginCreatorPluginOptionsMaxWidthQueryInteger>;
     destinationDir?: Maybe<SitePagePluginCreatorPluginOptionsDestinationDirQueryString>;
     modulePath?: Maybe<SitePagePluginCreatorPluginOptionsModulePathQueryString>;
+    tailwind?: Maybe<SitePagePluginCreatorPluginOptionsTailwindQueryBoolean>;
     develop?: Maybe<SitePagePluginCreatorPluginOptionsDevelopQueryBoolean>;
     purgeOnly?: Maybe<SitePagePluginCreatorPluginOptionsPurgeOnlyQueryList>;
     pathCheck?: Maybe<SitePagePluginCreatorPluginOptionsPathCheckQueryBoolean>;
@@ -6852,6 +6920,13 @@ export type SitePagePluginCreatorPluginOptionsPurgeOnlyQueryList = {
     glob?: Maybe<Scalars['String']>;
     in?: Maybe<Array<Maybe<Scalars['String']>>>;
     nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePagePluginCreatorPluginOptionsTailwindQueryBoolean = {
+    eq?: Maybe<Scalars['Boolean']>;
+    ne?: Maybe<Scalars['Boolean']>;
+    in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
 export type SitePagePluginCreatorResolveQueryString = {
@@ -7192,6 +7267,7 @@ export type SitePluginConnectionPluginOptionsInputObject_2 = {
     maxWidth?: Maybe<SitePluginConnectionPluginOptionsMaxWidthQueryInteger_2>;
     destinationDir?: Maybe<SitePluginConnectionPluginOptionsDestinationDirQueryString_2>;
     modulePath?: Maybe<SitePluginConnectionPluginOptionsModulePathQueryString_2>;
+    tailwind?: Maybe<SitePluginConnectionPluginOptionsTailwindQueryBoolean_2>;
     develop?: Maybe<SitePluginConnectionPluginOptionsDevelopQueryBoolean_2>;
     purgeOnly?: Maybe<SitePluginConnectionPluginOptionsPurgeOnlyQueryList_2>;
     pathCheck?: Maybe<SitePluginConnectionPluginOptionsPathCheckQueryBoolean_2>;
@@ -7354,6 +7430,13 @@ export type SitePluginConnectionPluginOptionsPurgeOnlyQueryList_2 = {
     nin?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
+export type SitePluginConnectionPluginOptionsTailwindQueryBoolean_2 = {
+    eq?: Maybe<Scalars['Boolean']>;
+    ne?: Maybe<Scalars['Boolean']>;
+    in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+};
+
 export type SitePluginConnectionResolveQueryString_2 = {
     eq?: Maybe<Scalars['String']>;
     ne?: Maybe<Scalars['String']>;
@@ -7374,11 +7457,13 @@ export enum SitePluginConnectionSortByFieldsEnum {
     Name = 'name',
     Version = 'version',
     PluginOptionsPlugins = 'pluginOptions___plugins',
+    PluginOptionsPostCssPlugins = 'pluginOptions___postCssPlugins',
     PluginOptionsPath = 'pluginOptions___path',
     PluginOptionsName = 'pluginOptions___name',
     PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
     PluginOptionsDestinationDir = 'pluginOptions___destinationDir',
     PluginOptionsModulePath = 'pluginOptions___modulePath',
+    PluginOptionsTailwind = 'pluginOptions___tailwind',
     PluginOptionsDevelop = 'pluginOptions___develop',
     PluginOptionsPurgeOnly = 'pluginOptions___purgeOnly',
     PluginOptionsPathCheck = 'pluginOptions___pathCheck',
@@ -7430,11 +7515,13 @@ export enum SitePluginDistinctEnum {
     Name = 'name',
     Version = 'version',
     PluginOptionsPlugins = 'pluginOptions___plugins',
+    PluginOptionsPostCssPlugins = 'pluginOptions___postCssPlugins',
     PluginOptionsPath = 'pluginOptions___path',
     PluginOptionsName = 'pluginOptions___name',
     PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
     PluginOptionsDestinationDir = 'pluginOptions___destinationDir',
     PluginOptionsModulePath = 'pluginOptions___modulePath',
+    PluginOptionsTailwind = 'pluginOptions___tailwind',
     PluginOptionsDevelop = 'pluginOptions___develop',
     PluginOptionsPurgeOnly = 'pluginOptions___purgeOnly',
     PluginOptionsPathCheck = 'pluginOptions___pathCheck',
@@ -7497,11 +7584,13 @@ export enum SitePluginGroupEnum {
     Name = 'name',
     Version = 'version',
     PluginOptionsPlugins = 'pluginOptions___plugins',
+    PluginOptionsPostCssPlugins = 'pluginOptions___postCssPlugins',
     PluginOptionsPath = 'pluginOptions___path',
     PluginOptionsName = 'pluginOptions___name',
     PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
     PluginOptionsDestinationDir = 'pluginOptions___destinationDir',
     PluginOptionsModulePath = 'pluginOptions___modulePath',
+    PluginOptionsTailwind = 'pluginOptions___tailwind',
     PluginOptionsDevelop = 'pluginOptions___develop',
     PluginOptionsPurgeOnly = 'pluginOptions___purgeOnly',
     PluginOptionsPathCheck = 'pluginOptions___pathCheck',
@@ -7763,6 +7852,7 @@ export type SitePluginPluginOptionsInputObject_2 = {
     maxWidth?: Maybe<SitePluginPluginOptionsMaxWidthQueryInteger_2>;
     destinationDir?: Maybe<SitePluginPluginOptionsDestinationDirQueryString_2>;
     modulePath?: Maybe<SitePluginPluginOptionsModulePathQueryString_2>;
+    tailwind?: Maybe<SitePluginPluginOptionsTailwindQueryBoolean_2>;
     develop?: Maybe<SitePluginPluginOptionsDevelopQueryBoolean_2>;
     purgeOnly?: Maybe<SitePluginPluginOptionsPurgeOnlyQueryList_2>;
     pathCheck?: Maybe<SitePluginPluginOptionsPathCheckQueryBoolean_2>;
@@ -7923,6 +8013,13 @@ export type SitePluginPluginOptionsPurgeOnlyQueryList_2 = {
     glob?: Maybe<Scalars['String']>;
     in?: Maybe<Array<Maybe<Scalars['String']>>>;
     nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePluginPluginOptionsTailwindQueryBoolean_2 = {
+    eq?: Maybe<Scalars['Boolean']>;
+    ne?: Maybe<Scalars['Boolean']>;
+    in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+    nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
 export type SitePluginResolveQueryString_2 = {
@@ -8394,20 +8491,20 @@ export type BlogRollQueryQuery = { __typename?: 'Query' } & {
                                         frontmatter: Maybe<
                                             { __typename?: 'frontmatter_2' } & Pick<
                                                 Frontmatter_2,
-                                                'title' | 'templateKey' | 'date' | 'featuredpost'
+                                                'title' | 'templateKey' | 'date' | 'featuredpost' | 'tags'
                                             > & {
                                                     featuredimage: Maybe<
-                                                        { __typename?: 'File' } & {
-                                                            childImageSharp: Maybe<
-                                                                { __typename?: 'ImageSharp' } & {
-                                                                    fluid: Maybe<
-                                                                        {
-                                                                            __typename?: 'ImageSharpFluid';
-                                                                        } & GatsbyImageSharpFluidFragment
-                                                                    >;
-                                                                }
-                                                            >;
-                                                        }
+                                                        { __typename?: 'File' } & Pick<File, 'absolutePath'> & {
+                                                                childImageSharp: Maybe<
+                                                                    { __typename?: 'ImageSharp' } & {
+                                                                        fluid: Maybe<
+                                                                            {
+                                                                                __typename?: 'ImageSharpFluid';
+                                                                            } & GatsbyImageSharpFluid_WithWebpFragment
+                                                                        >;
+                                                                    }
+                                                                >;
+                                                            }
                                                     >;
                                                 }
                                         >;
@@ -8478,7 +8575,11 @@ export type IndexPageTemplateQuery = { __typename?: 'Query' } & {
                                 >;
                             }
                         >;
-                        mainpitch: Maybe<{ __typename?: 'mainpitch_2' } & Pick<Mainpitch_2, 'title' | 'description'>>;
+                        calltoaction: Maybe<
+                            { __typename?: 'calltoaction_2' } & Pick<Calltoaction_2, 'title' | 'content'> & {
+                                    action: Maybe<{ __typename?: 'action_2' } & Pick<Action_2, 'text' | 'target'>>;
+                                }
+                        >;
                         intro: Maybe<
                             { __typename?: 'intro_2' } & Pick<Intro_2, 'heading' | 'description'> & {
                                     blurbs: Maybe<

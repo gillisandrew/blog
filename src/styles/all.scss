@@ -40,11 +40,22 @@
             @apply pl-4 flex items-center font-heading;
             > a {
                 @apply no-underline text-2xl mt-1;
+                svg {
+                    .logo-fill-1 {
+                        fill: theme('colors.alpha.90');
+                    }
+                    .logo-fill-2 {
+                        fill: theme('colors.alpha.80');
+                    }
+                    .logo-fill-3 {
+                        fill: theme('colors.alpha.70');
+                    }
+                }
                 span {
-                    color: rgba(255, 255, 255, 0.6);
+                    @apply text-alpha-70;
                 }
                 strong {
-                    color: rgba(255, 255, 255, 1);
+                    @apply text-white;
                 }
 
                 @screen lg {
@@ -94,7 +105,7 @@
                         }
                     }
                     > a {
-                        @apply inline-block py-2 px-4 text-gray-700;
+                        @apply inline-block py-2 px-4 text-white;
                         &:hover {
                             @apply underline;
                         }
@@ -119,6 +130,17 @@
         .nav-inner {
             .nav-brand {
                 > a {
+                    svg {
+                        .logo-fill-1 {
+                            fill: theme('colors.gradient.start');
+                        }
+                        .logo-fill-2 {
+                            fill: theme('colors.gradient.middle');
+                        }
+                        .logo-fill-3 {
+                            fill: theme('colors.gradient.end');
+                        }
+                    }
                     span {
                         @apply text-gray-600;
                     }
@@ -130,6 +152,13 @@
             .nav-content {
                 button {
                     @apply gradient text-white;
+                }
+                > ul {
+                    > li {
+                        > a {
+                            @apply text-gray-800;
+                        }
+                    }
                 }
             }
         }
@@ -159,5 +188,17 @@
                 }
             }
         }
+    }
+}
+
+svg.logo {
+    .logo-fill-1 {
+        fill: theme('colors.gradient.start');
+    }
+    .logo-fill-2 {
+        fill: theme('colors.gradient.middle');
+    }
+    .logo-fill-3 {
+        fill: theme('colors.gradient.end');
     }
 }

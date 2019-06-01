@@ -8,13 +8,7 @@ const PreviewCompatibleImage: React.FunctionComponent<PreviewCompatibleImageProp
     className,
 }: PreviewCompatibleImageProps): JSX.Element => {
     if (!!image && !!image.childImageSharp) {
-        return (
-            <Img
-                className={'image ' + className}
-                fluid={{ ...image.childImageSharp.fluid, aspectRatio: 4 / 1 }}
-                alt={alt}
-            />
-        );
+        return <Img className={'image ' + className} fixed={{ ...image.childImageSharp.fixed }} alt={alt} />;
     }
     if (!!childImageSharp) {
         return <Img fluid={{ ...childImageSharp.fluid, aspectRatio: 1 }} alt={alt} />;
