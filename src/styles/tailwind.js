@@ -1,6 +1,9 @@
 module.exports = {
     theme: {
         extend: {
+            boxShadow: {
+                'outline-invalid': '0 0 0 3px rgba(255, 0, 0, .5)',
+            },
             fontFamily: {
                 heading: ['Montreal', 'Arial', 'sans-serif'],
             },
@@ -33,19 +36,19 @@ module.exports = {
                 accent: theme('colors.gradient.end'),
             }),
             inset: {
-                '1/2': '50%'
-            }
+                '1/2': '50%',
+            },
         },
     },
     variants: {},
     plugins: [
         require('tailwindcss-aspect-ratio')({
             ratios: {
-              'square': [1, 1],
-              '16/9': [16, 9],
-              '4/3': [4, 3],
-              '21/9': [21, 9],
-            }
-          })
-    ]
+                square: [1, 1],
+                '16/9': [16, 9],
+                '4/3': [4, 3],
+                '21/9': [21, 9],
+            },
+        }),
+    ],
 };

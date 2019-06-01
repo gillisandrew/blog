@@ -4,6 +4,17 @@ module.exports = {
         description: 'Montreal-based web developer',
     },
     plugins: [
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+              name: `HEYANDREW`,
+              short_name: `HEYANDREW`,
+              start_url: `/`,
+              background_color: `#f7f0eb`,
+              theme_color: `#a2466c`,
+              display: `standalone`,
+            },
+          },
         'gatsby-plugin-react-helmet',
         `gatsby-plugin-typescript`,
         {

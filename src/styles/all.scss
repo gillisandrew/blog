@@ -202,3 +202,34 @@ svg.logo {
         fill: theme('colors.gradient.end');
     }
 }
+.form {
+    @apply block w-full;
+    .form-section {
+        @apply flex flex-wrap flex-col -m-2;
+        @screen md {
+            @apply flex-row;
+        }
+        .form-item {
+            @apply p-2;
+        }
+    }
+    textarea,
+    input[type] {
+        @apply bg-alpha-20 border border-white rounded;
+        transition: 0.1s linear background-color;
+        &:focus {
+            @apply bg-alpha-10 shadow-outline outline-none;
+        }
+        &:invalid {
+            @apply outline-none shadow-none;
+        }
+    }
+    &.validated {
+        textarea,
+        input[type] {
+            &:invalid {
+                @apply shadow-outline-invalid outline-none;
+            }
+        }
+    }
+}
