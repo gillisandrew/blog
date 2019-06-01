@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { ArrowFunctionExpression } from 'babel-types';
+import Logo from '../elements/Logo';
 
 interface NavbarProps {
     items: {
@@ -69,21 +69,11 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
                 <div className={`nav-inner container`}>
                     <div className="nav-brand">
                         <Link to="/" title="Logo">
-                            <svg
-                                className="h-10 mb-2 fill-current inline"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 512 420"
-                            >
-                                <g>
-                                    <path
-                                        d="M406,202.4c0-110.5-89.5-200-200-200S6,91.9,6,202.4s89.5,200,200,200c51.8,0,98.9-19.7,134.4-51.9
-                                        c-20.9-21.7-38.6-54.2-45.3-102.7c-16.5,32.4-50.2,54.6-89.1,54.6c-55.2,0-100-44.8-100-100c0-55.2,44.8-100,100-100
-                                        s100,44.8,100,100c0,108.1,58.4,162.2,112,189.1c45.7,22.9,88,26.2,88,26.2S406,328.8,406,202.4z"
-                                    />
-                                </g>
-                            </svg>
+                            <Logo light={!isScrolling} className="h-10 mb-2 fill-current inline" />
                             <h1>
-                                hey<strong>andrew</strong>
+                                <span>hey</span>
+                                <strong>andrew</strong>
+                                <span className="text-2xl">.dev</span>
                             </h1>
                         </Link>
                     </div>
@@ -96,30 +86,16 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
                         </button>
                     </div>
                     <div id="nav-content" className="nav-content">
-                        <ul className="list-reset lg:flex justify-end flex-1 items-center">
+                        <ul>
                             {items.map(
                                 ({ target, name, active }, index): JSX.Element => (
-                                    <li key={index} className="mr-3">
-                                        <Link
-                                            to={target}
-                                            className={`inline-block py-2 px-4 text-black${
-                                                active ? ' font-bold' : ''
-                                            } no-underline`}
-                                        >
-                                            {name}
-                                        </Link>
+                                    <li key={index} className={active ? 'active' : ''}>
+                                        <Link to={target}>{name}</Link>
                                     </li>
                                 ),
                             )}
                         </ul>
-                        <button
-                            id="navAction"
-                            className={`mx-auto xlg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 lg:mr-4 shadow opacity-75 bg-white${
-                                isScrolling ? ' gradient text-white' : ' text-gray-800'
-                            }`}
-                        >
-                            Contact
-                        </button>
+                        <button id="navAction">Contact</button>
                     </div>
                 </div>
                 <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />

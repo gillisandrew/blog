@@ -5,10 +5,15 @@ const PreviewCompatibleImage: React.FunctionComponent<PreviewCompatibleImageProp
     alt = '',
     childImageSharp = null,
     image = null,
+    className,
 }: PreviewCompatibleImageProps): JSX.Element => {
     if (!!image && !!image.childImageSharp) {
         return (
-            <Img className="image w-full h" fluid={{ ...image.childImageSharp.fluid, aspectRatio: 4 / 1 }} alt={alt} />
+            <Img
+                className={'image ' + className}
+                fluid={{ ...image.childImageSharp.fluid, aspectRatio: 4 / 1 }}
+                alt={alt}
+            />
         );
     }
     if (!!childImageSharp) {

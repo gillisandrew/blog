@@ -1,8 +1,7 @@
 module.exports = {
     siteMetadata: {
         title: 'HEYANDREW.DEV',
-        description:
-            'Montreal-based web developer',
+        description: 'Montreal-based web developer',
     },
     plugins: [
         'gatsby-plugin-react-helmet',
@@ -10,9 +9,10 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-sass',
             options: {
-                postCssPlugins: [require('tailwindcss')],
+                postCssPlugins: [require('tailwindcss')(`./tailwind.config.js`)],
             },
         },
+        'gatsby-plugin-web-font-loader',
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
             resolve: 'gatsby-source-filesystem',

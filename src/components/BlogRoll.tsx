@@ -25,11 +25,20 @@ class BlogRoll extends React.Component<P> {
                                         to={post.fields.slug}
                                         className="flex flex-wrap no-underline hover:no-underline"
                                     >
-                                        <PreviewCompatibleImage
-                                            className="h-auto w-auto"
-                                            image={post.frontmatter.featuredimage}
-                                            alt={`featured image thumbnail for post ${post.frontmatter.title}`}
-                                        />
+                                        {post.frontmatter.featuredimage ? (
+                                            <PreviewCompatibleImage
+                                                className="w-full h-24"
+                                                image={post.frontmatter.featuredimage}
+                                                alt={`featured image thumbnail for post ${post.frontmatter.title}`}
+                                            />
+                                        ) : (
+                                            <div
+                                                className="w-full h-24 gradient text-center text-alpha-50 tracking-widest"
+                                                style={{ lineHeight: '96px' }}
+                                            >
+                                                HEY<strong>ANDREW</strong>.DEV
+                                            </div>
+                                        )}
                                         <p className="w-full text-gray-600 text-xs md:text-sm px-6 uppercase py-3">
                                             {post.frontmatter.date}
                                         </p>
@@ -89,8 +98,8 @@ const BlogRollWithQuery = (): JSX.Element => (
                                 featuredimage {
                                     absolutePath
                                     childImageSharp {
-                                        fluid(maxWidth: 380, quality: 100) {
-                                            ...GatsbyImageSharpFluid_tracedSVG
+                                        fluid(maxHeight: 192, quality: 100) {
+                                            ...GatsbyImageSharpFluid
                                         }
                                     }
                                 }
