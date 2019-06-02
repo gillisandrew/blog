@@ -32,16 +32,12 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
             scrollPositionY: 0,
         };
     }
-    public componentWillMount(): void {
-        if (window) {
-            this.setState({ scrollPositionY: +window.scrollY });
-        }
-    }
     public componentDidMount(): void {
         // 32 is the number of milliseconds to debounce
         // I picked this because it's approx 1 frame (ie: 16.7ms)
         // You'll want to modulate that to your taste.
         // Add console.logs in handleScroll function to check if its flooding.
+        this.setState({ scrollPositionY: +window.scrollY });
         window.addEventListener('scroll', debounce(this.handleScroll, 16));
     }
     public componentWillUnmount(): void {
