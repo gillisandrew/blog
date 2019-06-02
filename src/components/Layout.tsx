@@ -8,7 +8,7 @@ import useSiteMetadata from './SiteMetadata';
 const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute): JSX.Element => {
     const { title, description } = useSiteMetadata();
     return (
-        <div className="leading-normal tracking-normal text-white gradient flex flex-col min-h-screen">
+        <div className="leading-normal tracking-normal text-white flex flex-col min-h-screen">
             <Helmet>
                 <html lang="en" />
                 <title>{title}</title>

@@ -32,6 +32,9 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
             scrollPositionY: 0,
         };
     }
+    public componentWillMount(): void {
+        this.setState({ scrollPositionY: +window.scrollY });
+    }
     public componentDidMount(): void {
         // 32 is the number of milliseconds to debounce
         // I picked this because it's approx 1 frame (ie: 16.7ms)
@@ -97,7 +100,7 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
                         <button id="navAction">Contact</button>
                     </div>
                 </div>
-                <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
+                <hr className="border-b border-alpha-10 opacity-50 my-0 py-0" />
             </nav>
         );
     }

@@ -7,32 +7,40 @@ import Layout from '../components/Layout';
 import Content, { HTMLContent, CustomContent } from '../components/Content';
 import { BlogPostByIdQuery } from '../graphql';
 
-export const BlogPostTemplate = ({ content, contentComponent, description, tags, title, helmet }: P): JSX.Element => {
+export const BlogPostTemplate = ({
+    content,
+    contentComponent,
+    description,
+    tags,
+    title,
+    helmet,
+    image,
+}: P): JSX.Element => {
     const PostContent = contentComponent || Content;
 
     return (
         <>
             {helmet || null}
-            <div className="container mx-auto pt-24 md:px0 px-24">
+            <div className="container mx-auto py-24 max-w-5xl">
                 <div className="bg-white text-gray-800 p-4 rounded shadow">
-                        <h1 className="text-2xl font-bold uppercase">{title}</h1>
-                        <p className="">{description}</p>
-                        <PostContent content={content} />
-                        {tags && tags.length ? (
-                            <div style={{ marginTop: `4rem` }}>
-                                <h4>Tags</h4>
-                                <ul className="taglist">
-                                    {tags.map(
-                                        (tag): JSX.Element => (
-                                            <li key={tag + `tag`}>
-                                                <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                                            </li>
-                                        ),
-                                    )}
-                                </ul>
-                            </div>
-                        ) : null}
+                    <h1 className="text-2xl font-bold uppercase">{title}</h1>
+                    <p className="">{description}</p>
+                    <PostContent content={content} />
+                    {tags && tags.length ? (
+                        <div style={{ marginTop: `4rem` }}>
+                            <h4>Tags</h4>
+                            <ul className="taglist">
+                                {tags.map(
+                                    (tag): JSX.Element => (
+                                        <li key={tag + `tag`}>
+                                            <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                                        </li>
+                                    ),
+                                )}
+                            </ul>
                         </div>
+                    ) : null}
+                </div>
             </div>
         </>
     );
@@ -45,6 +53,7 @@ interface P {
     title?: string;
     helmet?: object;
     tags: string[];
+    image: any;
 }
 
 interface BlogPostProps {
@@ -90,6 +99,7 @@ export const pageQuery = graphql`
                 title
                 description
                 tags
+                featuredpost
             }
         }
     }
