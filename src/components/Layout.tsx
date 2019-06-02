@@ -25,8 +25,8 @@ const TemplateWrapper = ({ children }: JSX.ElementChildrenAttribute): JSX.Elemen
             </Helmet>
             <Navbar
                 items={[
-                    { target: '/', name: 'Home', active: true },
-                    { target: '/contact', name: 'Contact', active: false },
+                    { icon: 'Home', target: '/', name: 'Home', active: true },
+                    { icon: 'Conversation', target: '/contact', name: 'Contact', active: false },
                 ]}
             />
             {children}

@@ -39,16 +39,9 @@ export const IndexPageTemplate = ({
                 <div className="w-full mb-4">
                     <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t" />
                 </div>
-                {intro.blurbs.map((blurb, index): JSX.Element => {
-                  const content = (
-                    <div className="w-5/6 sm:w-1/2 p-6">
-                        <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
-                        <p className="text-gray-600 mb-8">
-                          {blurb.text}
-                        </p>
-                    </div>
-                  )
-                  const image = (
+                {intro.blurbs.map((blurb, index): JSX.Element => (
+                    <div className="flex flex-wrap flex-row mt-6" key={index}>
+                    
                     <div className="w-full sm:w-1/2 p-6">
                         <svg
                             className="w-5/6 sm:h-64 mx-auto"
@@ -206,21 +199,15 @@ export const IndexPageTemplate = ({
                             <circle cx="600.35" cy="480.68" r="11.968" className="fill-accent"/>
                         </svg>
                   </div>
+                  <div className={`mt-6 w-5/6 sm:w-1/2 p-6 ${index % 2 ? 'md:order-last' : 'md:order-first'}`}>
+                        <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">A thing</h3>
+                        <p className="text-gray-600 mb-8">
+                          {blurb.text}
+                        </p>
+                    </div>
+                  </div>
                   )
-                  if(index % 2) {
-                    return (<div className="flex flex-wrap" key={index}>
-                      {image}
-                      {content}
-                      </div>
-                      )
-                  } else {
-                    return (<div className="flex flex-wrap" key={index}>
-                      {content}
-                      {image}
-                      </div>
-                      )
-                  }
-                })}
+                  )}
 
                 </div>
         </section>

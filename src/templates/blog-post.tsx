@@ -21,8 +21,8 @@ export const BlogPostTemplate = ({
     return (
         <>
             {helmet || null}
-            <div className="container mx-auto py-24 max-w-5xl">
-                <div className="bg-white text-gray-800 p-4 rounded shadow">
+            <div className="container mx-auto py-24 max-w-5xl p-6">
+                <div className="bg-white text-gray-800 rounded shadow p-6 mt-4">
                     <h1 className="text-2xl font-bold uppercase">{title}</h1>
                     <p className="">{description}</p>
                     <PostContent content={content} />

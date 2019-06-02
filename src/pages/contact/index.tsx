@@ -95,7 +95,7 @@ export default class Index extends React.Component<{}, ContactFormState> {
     public render(): JSX.Element {
         return (
             <Layout>
-                <section className="flex-1 mt-24">
+                <section className="flex-1 mt-24 pt-6">
                     <div className="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
                         <div className="contact-form flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
                             <h1>Contact</h1>

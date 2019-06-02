@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Logo from '../elements/Logo';
+import ReactZondicons from 'react-zondicons';
 
 interface NavbarProps {
     items: {
+        icon: string;
         name: string;
         target: string;
         active: boolean;
@@ -60,9 +62,11 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
         const { isOpen } = this.state;
         return (
             <nav
-                className={['nav-bar', isScrolling ? 'nav-bar--scrolling' : '', isOpen ? 'nav-bar--toggled' : ''].join(
-                    ' ',
-                )}
+                className={[
+                    'nav-bar',
+                    isScrolling ? 'nav-bar--scrolling' : 'nav-bar--top',
+                    isOpen ? 'nav-bar--toggled' : '',
+                ].join(' ')}
                 role="navigation"
                 aria-label="main-navigation"
                 id="header"
@@ -88,14 +92,20 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
                     <div id="nav-content" className="nav-content">
                         <ul>
                             {items.map(
-                                ({ target, name, active }, index): JSX.Element => (
-                                    <li key={index} className={active ? 'active' : ''}>
-                                        <Link to={target}>{name}</Link>
-                                    </li>
-                                ),
+                                ({ target, name, active, icon }, index): JSX.Element => {
+                                    const IconComponent = ReactZondicons[icon];
+                                    return (
+                                        <li key={index} className={active ? ' active' : ''}>
+                                            <Link to={target} className="flex flex-row items-center inline-block p-6">
+                                                {icon ? <IconComponent className="fill-accent mr-2" size={16} /> : null}
+                                                <span className="flex">{name}</span>
+                                            </Link>
+                                        </li>
+                                    );
+                                },
                             )}
                         </ul>
-                        <button id="navAction">Contact</button>
+                        {/* <button id="navAction">Contact</button> */}
                     </div>
                 </div>
                 <hr className="border-b border-alpha-10 opacity-50 my-0 py-0" />
