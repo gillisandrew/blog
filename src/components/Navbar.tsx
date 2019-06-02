@@ -33,7 +33,9 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
         };
     }
     public componentWillMount(): void {
-        this.setState({ scrollPositionY: +window.scrollY });
+        if (window) {
+            this.setState({ scrollPositionY: +window.scrollY });
+        }
     }
     public componentDidMount(): void {
         // 32 is the number of milliseconds to debounce
