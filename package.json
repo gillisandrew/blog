@@ -87,7 +87,7 @@
         "prettier-eslint-cli": "^4.7.1",
         "prettier-stylelint": "^0.4.2",
         "rimraf": "^2.6.2",
-        "stylelint": "^10.0.1",
+        "stylelint": "^13.0.0",
         "stylelint-config-recommended": "^2.2.0",
         "tailwindcss": "^1.0.2",
         "tailwindcss-alpha": "^0.1.4",
